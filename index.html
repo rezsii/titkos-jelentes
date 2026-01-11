@@ -6,15 +6,31 @@
 <title>CLASSIFIED</title>
 
 <style>
+/* ALAP */
 body {
     margin: 0;
     min-height: 100vh;
-    background: url('suitcase.jpg') no-repeat center center fixed;
+    background: url('borond.jpg') no-repeat center center;
     background-size: cover;
     font-family: "Courier New", monospace;
 }
 
-/* FIX FEJLÉC */
+/* JELSZAVAS ZÁR */
+#lockScreen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    color: #00ffcc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+    text-align: center;
+}
+
+/* FEJLÉC */
 .overlay-header {
     position: fixed;
     top: 22px;
@@ -26,32 +42,12 @@ body {
     pointer-events: none;
 }
 
-.overlay-header h1 {
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: 2px;
-}
-
-.overlay-header h2 {
-    margin-top: 6px;
-    font-size: 12px;
-    font-weight: normal;
-}
-
-.overlay-header .war {
-    margin-top: 6px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: rgba(200,180,150,0.9);
-}
+.overlay-header h1 { margin:0; font-size:18px; letter-spacing:2px; }
+.overlay-header h2 { margin-top:6px; font-size:12px; font-weight:normal; }
+.overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:2px; color:rgba(200,180,150,0.9); }
 
 /* KONTAINER */
-.container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.container { min-height: 100vh; display: flex; justify-content: center; align-items: center; }
 
 /* JELENTÉS */
 .report {
@@ -64,7 +60,7 @@ body {
     border: 1px solid #bbb;
 }
 
-/* TOP SECRET PECSÉT */
+/* PECSÉT */
 .stamp {
     position: absolute;
     top: 25px;
@@ -79,19 +75,10 @@ body {
     opacity: 0.75;
 }
 
-/* META */
-.meta {
-    font-size: 13px;
-    margin-bottom: 25px;
-}
+/* SZÖVEG */
+.content { font-size: 15px; line-height: 1.9; }
 
-/* TARTALOM */
-.content {
-    font-size: 15px;
-    line-height: 1.9;
-}
-
-/* KÉZÍRÁSOS MEGJEGYZÉS */
+/* KÉZÍRÁS */
 .handwritten {
     margin-top: 35px;
     font-family: "Comic Sans MS", "Brush Script MT", cursive;
@@ -101,7 +88,7 @@ body {
     opacity: 0.85;
 }
 
-/* ÖNMEGSEMMISÍTŐ */
+/* VISSZASZÁMLÁLÓ */
 .countdown {
     position: fixed;
     bottom: 15px;
@@ -110,24 +97,27 @@ body {
     color: #ff5555;
     padding: 10px 14px;
     font-size: 12px;
-    letter-spacing: 1px;
     border: 1px solid #ff5555;
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 30px;
-    font-size: 9px;
-    color: #555;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
 }
 
 * { user-select: none; }
 </style>
 </head>
+
 <body>
 
+<!-- JELSZÓ -->
+<div id="lockScreen">
+    <h2>CLASSIFIED ACCESS</h2>
+    <p>Enter authorization code</p>
+    <input id="pwd" type="password" placeholder="••••"
+    style="padding:10px;font-size:16px;text-align:center;">
+    <button onclick="unlock()"
+    style="margin-top:10px;padding:8px 16px;font-size:14px;">CONFIRM</button>
+    <p id="error" style="color:red;margin-top:10px;"></p>
+</div>
+
+<!-- FEJLÉC -->
 <div class="overlay-header">
     <h1>ARGYELÁN REZSŐ</h1>
     <h2>Tárgy: Műszakjelentés – Operatív összefoglaló</h2>
@@ -139,78 +129,49 @@ body {
 
 <div class="stamp">TOP SECRET</div>
 
-<div class="meta">
-    <p><strong>Minősítés:</strong> SZIGORÚAN BIZALMAS</p>
-    <p><strong>Aktaszám:</strong> PESTI041</p>
-    <p><strong>Dátum:</strong> 2026.01.10.</p>
-</div>
-
 <div class="content">
-
 <h3>SZIGORÚAN BIZALMAS<br>OPERATÍV JELENTÉS</h3>
 
-<p>
-Alulírott Argyelán Rezső, koordinátor főpénztáros, jelentem, hogy 2026. január 10-én,
-a délutáni időszakban koordinátori szolgálatot láttam el.
-</p>
+<p>Alulírott Argyelán Rezső, koordinátor főpénztáros, jelentem, hogy 2026. január 10-én, a délutáni időszakban koordinátori szolgálatot láttam el.</p>
 
-<p>
-Szolgálatba lépésemkor a területen fokozott forgalmi terhelést tapasztaltam.
-A főpénztár átvétele hiánytalanul és rendellenesség nélkül megtörtént,
-eltérést vagy szabálytalanságot nem észleltem.
-Az ellenőrzés során megállapítottam, hogy a csokoládétorta korábban nem került kivételre,
-ezért a hiányosságot az előírásoknak megfelelően pótoltam,
-a rendszertételt ellenőriztem és az érintettekkel egyeztettem.
-</p>
+<p>Szolgálatba lépésemkor a területen fokozott forgalmi terhelést tapasztaltam. A főpénztár átvétele hiánytalanul és rendellenesség nélkül megtörtént, eltérést vagy szabálytalanságot nem észleltem. Az ellenőrzés során megállapítottam, hogy a csokoládétorta korábban nem került kivételre, ezért a hiányosságot az előírásoknak megfelelően pótoltam, a rendszertételt ellenőriztem és az érintettekkel egyeztettem.</p>
 
-<p>
-Az adminisztratív feladatok elvégzését követően feltöltési műveleteket hajtottam végre,
-majd az üzemi területen aktívan közreműködtem a forgalom kezelésében.
-A PC-számla kiállítása megtörtént,
-annak rögzítését a rendszerben szabályszerűen elvégeztem.
-</p>
+<p>Az adminisztratív feladatok elvégzését követően feltöltési műveleteket hajtottam végre, majd az üzemi területen aktívan közreműködtem a forgalom kezelésében. A PC-számla kiállítása megtörtént, annak rögzítését a rendszerben szabályszerűen elvégeztem.</p>
 
-<p>
-A műszak során fagyos normál zselé érkezett zsákos kiszerelésben,
-amely szokatlan átadási módot jelentett.
-A helyzetet azonnal felmértem, majd
-Török-Páli Erzsébet műszakvezető közreműködésével
-az előírások szerint korrigáltuk,
-és az árut a rendszerben megfelelően regisztráltuk.
-</p>
+<p>A műszak során fagyos normál zselé érkezett zsákos kiszerelésben, amely szokatlan átadási módot jelentett. A helyzetet azonnal felmértem, majd Török-Páli Erzsébet műszakvezető közreműködésével az előírások szerint korrigáltuk, és az árut a rendszerben megfelelően regisztráltuk.</p>
 
-<p>
-A teljes délutáni időszak alatt a forgalom végig intenzív maradt,
-azonban az operatív feladatokat hiánytalanul,
-kontroll alatt tartva láttam el.
-A műszak végrehajtása során minden rám bízott feladatot elvégeztem,
-rendkívüli esemény nem történt.
-</p>
-
-<p>
-Megjegyzem, hogy a rovancs aláírása technikai okokból elmaradt,
-annak pótlását a következő munkanapon végrehajtom.
-</p>
+<p>A teljes délutáni időszak alatt a forgalom végig intenzív maradt, azonban az operatív feladatokat hiánytalanul, kontroll alatt tartva láttam el. Rendkívüli esemény nem történt.</p>
 
 <p><strong>Jelentés vége.</strong></p>
-
 </div>
 
-<div class="countdown" id="timer">
-ÖNMEGSEMMISÍTÉS: 15 mp
+<div class="handwritten">
+„A művelet stabil volt. Rovancs pótlása következő ciklusban.”
 </div>
+
+</div>
+</div>
+
+<div class="countdown" id="timer">ÖNMEGSEMMISÍTÉS: 60 mp</div>
 
 <script>
-let time = 60;
-const timer = document.getElementById("timer");
+function unlock() {
+  const pass = document.getElementById("pwd").value;
+  if(pass==="1998") {
+    document.getElementById("lockScreen").style.display="none";
+  } else {
+    document.getElementById("error").textContent="ACCESS DENIED";
+  }
+}
 
-setInterval(() => {
-    time--;
-    timer.textContent = "ÖNMEGSEMMISÍTÉS: " + time + " mp";
-    if (time <= 0) {
-        timer.textContent = "DOKUMENTUM MEGSEMMISÍTVE";
-    }
-}, 1000);
+/* visszaszámláló */
+let time = 60;
+setInterval(()=>{
+  time--;
+  const t=document.getElementById("timer");
+  if(time>0) t.textContent="ÖNMEGSEMMISÍTÉS: "+time+" mp";
+  else t.textContent="DOKUMENTUM MEGSEMMISÍTVE";
+},1000);
 </script>
 
 </body>
