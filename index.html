@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SZIGORÚAN BIZALMAS</title>
+<title>SZIGORÚAN BIZALMAS - Operatív Jelentés</title>
 
 <style>
 body {
@@ -12,9 +12,10 @@ body {
     background: url('suitcase.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: "Courier New", monospace;
+    color: #000;
 }
 
-/* PASSWORD LOCK */
+/* LOCK SCREEN */
 #lockScreen {
     position: fixed;
     top:0; left:0;
@@ -45,10 +46,10 @@ body {
     font-size: 16px;
 }
 
-/* HEADER overlay */
+/* HEADER */
 .overlay-header {
     position: fixed;
-    top: 22px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -62,42 +63,46 @@ body {
 .overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:1px; color:rgba(200,180,150,0.9); }
 
 /* CONTAINER */
-.container { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px 10px 50px 10px; overflow-y: auto; }
+.container { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 15px 8px 40px 8px; overflow-y: auto; }
 
 /* REPORT */
 .report {
     position: relative;
-    background: rgba(248,248,245,0.95);
+    background: rgba(248,248,245,0.85);
     max-width: 700px;
     width: 100%;
-    padding: 25px 20px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    padding: 20px 15px;
+    box-shadow: 0 0 35px rgba(0,0,0,0.6);
     border: 1px solid #bbb;
+    white-space: pre-wrap;
 }
 
 /* TOP SECRET STAMP */
 .stamp {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 12px;
+    right: 12px;
     transform: rotate(-12deg);
     color: darkred;
     border: 3px solid darkred;
-    padding: 6px 12px;
+    padding: 5px 10px;
     font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 14px;
-    opacity: 0.75;
+    letter-spacing: 1px;
+    font-size: 12px;
+    opacity: 0.8;
+    animation: blink 1s infinite;
 }
 
-/* CONTENT */
-.content { font-size: 15px; line-height: 1.8; }
+@keyframes blink {
+    0%,50%,100% { opacity:0.8; }
+    25%,75% { opacity:0.3; }
+}
 
 /* HANDWRITTEN NOTE */
 .handwritten {
-    margin-top: 20px;
+    margin-top: 15px;
     font-family: "Comic Sans MS", "Brush Script MT", cursive;
-    font-size: 13px;
+    font-size: 12px;
     color: #333;
     transform: rotate(-1.5deg);
     opacity: 0.85;
@@ -106,16 +111,18 @@ body {
 /* COUNTDOWN */
 .countdown {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 8px;
+    right: 8px;
     background: rgba(0,0,0,0.75);
     color: #ff5555;
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-size: 12px;
     border: 1px solid #ff5555;
+    font-weight: bold;
 }
 
-* { user-select: none; }
+/* TYPO ANIMATION */
+#typed { white-space: pre-wrap; }
 </style>
 </head>
 
@@ -142,23 +149,7 @@ body {
 
 <div class="stamp">TOP SECRET</div>
 
-<div class="content">
-<h3>SZIGORÚAN BIZALMAS<br>OPERATÍV JELENTÉS</h3>
-
-<p>Alulírott Argyelán Rezső, koordinátor főpénztáros, jelentem, hogy 2026. január 10-én, a délutáni időszakban koordinátori szolgálatot láttam el.</p>
-
-<p>Szolgálatba lépésemkor a területen fokozott forgalmi terhelést tapasztaltam. A főpénztár átvétele hiánytalanul és rendellenesség nélkül megtörtént, eltérést vagy szabálytalanságot nem észleltem. Az ellenőrzés során megállapítottam, hogy a csokoládétorta korábban nem került kivételre, ezért a hiányosságot az előírásoknak megfelelően pótoltam, a rendszertételt ellenőriztem és az érintettekkel egyeztettem.</p>
-
-<p>Az adminisztratív feladatok elvégzését követően feltöltési műveleteket hajtottam végre, majd az üzemi területen aktívan közreműködtem a forgalom kezelésében. A PC-számla kiállítása megtörtént, annak rögzítését a rendszerben szabályszerűen elvégeztem.</p>
-
-<p>A műszak során fagyos normál zselé érkezett zsákos kiszerelésben, amely szokatlan átadási módot jelentett. A helyzetet azonnal felmértem, majd Török-Páli Erzsébet műszakvezető közreműködésével az előírások szerint korrigáltuk, és az árut a rendszerben megfelelően regisztráltuk.</p>
-
-<p>A teljes délutáni időszak alatt a forgalom végig intenzív maradt, azonban az operatív feladatokat hiánytalanul, kontroll alatt tartva láttam el. Rendkívüli esemény nem történt.</p>
-
-<p>Megjegyzem, hogy a rovancs aláírása technikai okokból elmaradt, annak pótlását a következő munkanapon végrehajtom.</p>
-
-<p><strong>Jelentés vége.</strong></p>
-</div>
+<div id="typed" class="content"></div>
 
 <div class="handwritten">
 "Operation stable. Inventory follow-up will be completed in the next cycle."
@@ -167,27 +158,68 @@ body {
 </div>
 </div>
 
-<div class="countdown" id="timer">SELF-DESTRUCT: 60 sec</div>
+<div class="countdown" id="timer">SELF-DESTRUCT: 2:30</div>
 
 <script>
+/* LOCK SCREEN */
 function unlock() {
   const pass = document.getElementById("pwd").value;
   if(pass==="1998") {
     document.getElementById("lockScreen").style.display="none";
+    startTyping();
   } else {
     document.getElementById("error").textContent="ACCESS DENIED";
   }
 }
 
-/* countdown */
-let time = 60;
+/* COUNTDOWN 2:30 = 150 sec */
+let totalTime = 150; 
 setInterval(()=>{
-  time--;
-  const t=document.getElementById("timer");
-  if(time>0) t.textContent="SELF-DESTRUCT: "+time+" sec";
-  else t.textContent="DOCUMENT DESTROYED";
+  const t = document.getElementById("timer");
+  totalTime--;
+  if(totalTime>=0){
+    let minutes = Math.floor(totalTime / 60);
+    let seconds = totalTime % 60;
+    if(seconds<10) seconds = "0"+seconds;
+    t.textContent = "SELF-DESTRUCT: "+minutes+":"+seconds;
+  } else {
+    t.textContent="DOCUMENT DESTROYED";
+  }
 },1000);
+
+/* TYPING EFFECT */
+const reportText = `SZIGORÚAN BIZALMAS
+OPERATÍV JELENTÉS
+
+Alulírott Argyelán Rezső, koordinátor főpénztáros, jelentem, hogy 2026. január 10-én, a délutáni időszakban koordinátori szolgálatot láttam el.
+
+Szolgálatba lépésemkor a területen fokozott forgalmi terhelést tapasztaltam. A főpénztár átvétele hiánytalanul és rendellenesség nélkül megtörtént, eltérést vagy szabálytalanságot nem észleltem. Az ellenőrzés során megállapítottam, hogy a csokoládétorta korábban nem került kivételre, ezért a hiányosságot az előírásoknak megfelelően pótoltam, a rendszertételt ellenőriztem és az érintettekkel egyeztettem.
+
+Az adminisztratív feladatok elvégzését követően feltöltési műveleteket hajtottam végre, majd az üzemi területen aktívan közreműködtem a forgalom kezelésében. A PC-számla kiállítása megtörtént, annak rögzítését a rendszerben szabályszerűen elvégeztem.
+
+A műszak során fagyos normál zselé érkezett zsákos kiszerelésben, amely szokatlan átadási módot jelentett. A helyzetet azonnal felmértem, majd Török-Páli Erzsébet műszakvezető közreműködésével az előírások szerint korrigáltuk, és az árut a rendszerben megfelelően regisztráltuk.
+
+A teljes délutáni időszak alatt a forgalom végig intenzív maradt, azonban az operatív feladatokat hiánytalanul, kontroll alatt tartva láttam el. Rendkívüli esemény nem történt.
+
+Megjegyzem, hogy a rovancs aláírása technikai okokból elmaradt, annak pótlását a következő munkanapon végrehajtom.
+
+Jelentés vége.
+`;
+
+function startTyping() {
+    let i=0;
+    const typedDiv = document.getElementById("typed");
+    function type() {
+        if(i<reportText.length){
+            typedDiv.innerHTML += reportText.charAt(i);
+            i++;
+            setTimeout(type, 15);
+        }
+    }
+    type();
+}
 </script>
 
 </body>
 </html>
+
