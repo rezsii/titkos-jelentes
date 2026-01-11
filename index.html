@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CLASSIFIED REPORT</title>
+<title>SZIGORÚAN BIZALMAS</title>
 
 <style>
 body {
     margin: 0;
     min-height: 100vh;
-    background: url('suitcase.jpg') no-repeat center center;
+    background: url('suitcase.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: "Courier New", monospace;
 }
 
-/* PASSWORD LOCK - fullscreen for all devices */
+/* PASSWORD LOCK */
 #lockScreen {
     position: fixed;
     top:0; left:0;
@@ -62,31 +62,31 @@ body {
 .overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:1px; color:rgba(200,180,150,0.9); }
 
 /* CONTAINER */
-.container { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding:10px; }
+.container { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px 10px 50px 10px; overflow-y: auto; }
 
 /* REPORT */
 .report {
     position: relative;
-    background: rgba(248,248,245,0.97);
+    background: rgba(248,248,245,0.95);
     max-width: 700px;
     width: 100%;
-    padding: 35px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.7);
+    padding: 25px 20px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
     border: 1px solid #bbb;
 }
 
 /* TOP SECRET STAMP */
 .stamp {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     transform: rotate(-12deg);
     color: darkred;
     border: 3px solid darkred;
-    padding: 8px 15px;
+    padding: 6px 12px;
     font-weight: bold;
     letter-spacing: 2px;
-    font-size: 16px;
+    font-size: 14px;
     opacity: 0.75;
 }
 
@@ -95,9 +95,9 @@ body {
 
 /* HANDWRITTEN NOTE */
 .handwritten {
-    margin-top: 25px;
+    margin-top: 20px;
     font-family: "Comic Sans MS", "Brush Script MT", cursive;
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
     transform: rotate(-1.5deg);
     opacity: 0.85;
