@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CLASSIFIED</title>
+<title>CLASSIFIED REPORT</title>
 
 <style>
-/* ALAP */
 body {
     margin: 0;
     min-height: 100vh;
-   background: url('suitcase.jpg') no-repeat center center;
+    background: url('suitcase.jpg') no-repeat center center;
     background-size: cover;
-    background-attachment: scroll; /* mobilbarát */
+    font-family: "Courier New", monospace;
 }
 
-/* JELSZAVAS ZÁR */
+/* PASSWORD LOCK - fullscreen for all devices */
 #lockScreen {
     position: fixed;
-    top: 0; left: 0;
+    top:0; left:0;
     width: 100%; height: 100%;
     background: black;
     color: #00ffcc;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    z-index: 9999;
     text-align: center;
+    z-index: 9999;
+    padding: 20px;
 }
 
-/* FEJLÉC */
+#lockScreen input {
+    padding: 12px;
+    font-size: 18px;
+    width: 60%;
+    max-width: 250px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#lockScreen button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* HEADER overlay */
 .overlay-header {
     position: fixed;
     top: 22px;
@@ -42,45 +57,45 @@ body {
     pointer-events: none;
 }
 
-.overlay-header h1 { margin:0; font-size:18px; letter-spacing:2px; }
+.overlay-header h1 { margin:0; font-size:18px; letter-spacing:1px; }
 .overlay-header h2 { margin-top:6px; font-size:12px; font-weight:normal; }
-.overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:2px; color:rgba(200,180,150,0.9); }
+.overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:1px; color:rgba(200,180,150,0.9); }
 
-/* KONTAINER */
-.container { min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+/* CONTAINER */
+.container { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding:10px; }
 
-/* JELENTÉS */
+/* REPORT */
 .report {
     position: relative;
     background: rgba(248,248,245,0.97);
-    max-width: 720px;
-    width: 92%;
-    padding: 45px;
-    box-shadow: 0 0 80px rgba(0,0,0,0.7);
+    max-width: 700px;
+    width: 100%;
+    padding: 35px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.7);
     border: 1px solid #bbb;
 }
 
-/* PECSÉT */
+/* TOP SECRET STAMP */
 .stamp {
     position: absolute;
-    top: 25px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
     transform: rotate(-12deg);
     color: darkred;
     border: 3px solid darkred;
-    padding: 10px 18px;
+    padding: 8px 15px;
     font-weight: bold;
     letter-spacing: 2px;
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.75;
 }
 
-/* SZÖVEG */
-.content { font-size: 15px; line-height: 1.9; }
+/* CONTENT */
+.content { font-size: 15px; line-height: 1.8; }
 
-/* KÉZÍRÁS */
+/* HANDWRITTEN NOTE */
 .handwritten {
-    margin-top: 35px;
+    margin-top: 25px;
     font-family: "Comic Sans MS", "Brush Script MT", cursive;
     font-size: 14px;
     color: #333;
@@ -88,14 +103,14 @@ body {
     opacity: 0.85;
 }
 
-/* VISSZASZÁMLÁLÓ */
+/* COUNTDOWN */
 .countdown {
     position: fixed;
-    bottom: 15px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     background: rgba(0,0,0,0.75);
     color: #ff5555;
-    padding: 10px 14px;
+    padding: 8px 12px;
     font-size: 12px;
     border: 1px solid #ff5555;
 }
@@ -106,22 +121,20 @@ body {
 
 <body>
 
-<!-- JELSZÓ -->
+<!-- PASSWORD LOCK -->
 <div id="lockScreen">
     <h2>CLASSIFIED ACCESS</h2>
     <p>Enter authorization code</p>
-    <input id="pwd" type="password" placeholder="••••"
-    style="padding:10px;font-size:16px;text-align:center;">
-    <button onclick="unlock()"
-    style="margin-top:10px;padding:8px 16px;font-size:14px;">CONFIRM</button>
+    <input id="pwd" type="password" placeholder="••••">
+    <button onclick="unlock()">CONFIRM</button>
     <p id="error" style="color:red;margin-top:10px;"></p>
 </div>
 
-<!-- FEJLÉC -->
+<!-- HEADER -->
 <div class="overlay-header">
     <h1>ARGYELÁN REZSŐ</h1>
-    <h2>Tárgy: Műszakjelentés – Operatív összefoglaló</h2>
-    <div class="war">WAR DEPARTMENT · FIELD REPORT · 1944</div>
+    <h2>Subject: Shift Report – Operational Summary</h2>
+    <div class="war">FIELD REPORT · STRICTLY CONFIDENTIAL</div>
 </div>
 
 <div class="container">
@@ -142,17 +155,19 @@ body {
 
 <p>A teljes délutáni időszak alatt a forgalom végig intenzív maradt, azonban az operatív feladatokat hiánytalanul, kontroll alatt tartva láttam el. Rendkívüli esemény nem történt.</p>
 
+<p>Megjegyzem, hogy a rovancs aláírása technikai okokból elmaradt, annak pótlását a következő munkanapon végrehajtom.</p>
+
 <p><strong>Jelentés vége.</strong></p>
 </div>
 
 <div class="handwritten">
-„A művelet stabil volt. Rovancs pótlása következő ciklusban.”
+"Operation stable. Inventory follow-up will be completed in the next cycle."
 </div>
 
 </div>
 </div>
 
-<div class="countdown" id="timer">ÖNMEGSEMMISÍTÉS: 60 mp</div>
+<div class="countdown" id="timer">SELF-DESTRUCT: 60 sec</div>
 
 <script>
 function unlock() {
@@ -164,17 +179,15 @@ function unlock() {
   }
 }
 
-/* visszaszámláló */
+/* countdown */
 let time = 60;
 setInterval(()=>{
   time--;
   const t=document.getElementById("timer");
-  if(time>0) t.textContent="ÖNMEGSEMMISÍTÉS: "+time+" mp";
-  else t.textContent="DOKUMENTUM MEGSEMMISÍTVE";
+  if(time>0) t.textContent="SELF-DESTRUCT: "+time+" sec";
+  else t.textContent="DOCUMENT DESTROYED";
 },1000);
 </script>
 
 </body>
 </html>
-
-
