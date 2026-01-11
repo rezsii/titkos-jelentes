@@ -48,22 +48,46 @@ body {
 
 /* HEADER */
 .overlay-header {
-    position: fixed;
-    top: 20px;
-    left: 50%;
+    position: fixed;      /* fixen a képernyő tetején */
+    top: 0;               
+    left: 50%;            
     transform: translateX(-50%);
     text-align: center;
-    color: rgba(240,240,240,0.9);
+    color: rgba(240,240,240,0.95);
     text-shadow: 0 0 8px rgba(0,0,0,0.9);
     pointer-events: none;
+    z-index: 1000;
+    padding: 10px 20px;
 }
 
-.overlay-header h1 { margin:0; font-size:18px; letter-spacing:1px; }
-.overlay-header h2 { margin-top:6px; font-size:12px; font-weight:normal; }
-.overlay-header .war { margin-top:6px; font-size:10px; letter-spacing:1px; color:rgba(200,180,150,0.9); }
+.overlay-header h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.overlay-header h2 {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.overlay-header .war {
+    margin-top: 4px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(200,180,150,0.9);
+}
 
 /* CONTAINER */
-.container { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 15px 8px 40px 8px; overflow-y: auto; }
+.container { 
+    min-height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    padding: 80px 8px 40px 8px; /* header helyet hagyunk */
+    overflow-y: auto; 
+}
 
 /* REPORT */
 .report {
@@ -152,13 +176,17 @@ body {
 <div id="typed" class="content"></div>
 
 <div class="handwritten">
-"Operation stable. Inventory follow-up will be completed in the next cycle."
+Unauthorized access will trigger countermeasures. This document is invisible to all but authorized personnel.
+EYES ONLY – Unauthorized access will trigger countermeasures.
+SZIGORÚAN BIZALMAS – OPERATÍV JELENTÉS
+Alulírott Argyelán Rezső, koordinátor főpénztáros, jelentem, hogy a dokumentumban szereplő információ mindenki előtt rejtve marad, és kizárólag hivatalos felhatalmazással rendelkezők számára hozzáférhető.
+Code: PESTI041 – strictly confidential.
 </div>
 
 </div>
 </div>
 
-<div class="countdown" id="timer">SELF-DESTRUCT: 2:30</div>
+<div class="countdown" id="timer">SELF-DESTRUCT: 1:10</div>
 
 <script>
 /* LOCK SCREEN */
@@ -172,8 +200,8 @@ function unlock() {
   }
 }
 
-/* COUNTDOWN 2:30 = 150 sec */
-let totalTime = 150; 
+/* COUNTDOWN 1:10 = 70 sec */
+let totalTime = 70; 
 setInterval(()=>{
   const t = document.getElementById("timer");
   totalTime--;
@@ -222,4 +250,3 @@ function startTyping() {
 
 </body>
 </html>
-
